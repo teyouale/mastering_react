@@ -1,14 +1,19 @@
 import React, { Component } from "react";
+import Like from "../components/Like";
 import { getMovies } from "../services/fakeMovieService";
 
 class Movies extends Component {
   state = {
-    movies: getMovies()
+    movies: getMovies(),
+    likeStatus: false
   };
 
   handleDelete = movie => {
     const movies = this.state.movies.filter(m => m._id !== movie._id);
     this.setState({ movies: movies });
+  };
+  handleLike = () => {
+    this.setState({ likeStatus: "true" });
   };
 
   render() {
@@ -26,6 +31,7 @@ class Movies extends Component {
                 <th scope='col'>Stock</th>
                 <th scope='col'>Rate</th>
                 <th scope='col' />
+                <th scope='col' />
               </tr>
             </thead>
             <tbody>
@@ -35,6 +41,12 @@ class Movies extends Component {
                   <td>{movie.genre.name}</td>
                   <td>{movie.numberInStock}</td>
                   <td>{movie.dailyRentalRate}</td>
+                  <td>
+                    <Like
+                      handleLike={this.handleLike}
+                      likeStatus={this.state.likeStatus}
+                    />
+                  </td>
                   <td>
                     <button
                       className='btn btn-danger'
