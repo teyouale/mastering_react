@@ -1,19 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Like extends Component {
-  render() {
-    var classes = "badge badge-";
-    classes += this.props.likeStatus ? "success" : "primary";
-    return (
-      <span
-        className={classes}
-        style={{ cursor: "pointer" }}
-        onClick={this.props.onClick}
-      >
-        Like
-      </span>
-    );
-  }
-}
+const Like = ({ onClick, likeStatus }) => {
+  var classes = "badge badge-";
+  classes += likeStatus ? "success" : "primary";
+  return (
+    <span className={classes} style={{ cursor: "pointer" }} onClick={onClick}>
+      Like
+    </span>
+  );
+};
 
 export default Like;
