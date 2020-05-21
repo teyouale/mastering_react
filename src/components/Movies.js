@@ -8,7 +8,7 @@ class Movies extends Component {
 	state = {
 		movies: getMovies(),
 		currentPage: 1,
-		pageSize: 4
+		pageSize: 4,
 	};
 
 	handleDelete = movie => {
@@ -25,7 +25,6 @@ class Movies extends Component {
 
 	handlePagination = num => {
 		this.setState({ currentPage: num });
-		console.log('Pagination Clicked', num);
 	};
 
 	render() {
