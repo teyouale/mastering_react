@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import Like from "./Like";
-import { getMovies } from "../services/fakeMovieService";
+import React, { Component } from 'react';
+import Like from './Like';
+import Pagination from './Pagination';
+import { getMovies } from '../services/fakeMovieService';
 
 class Movies extends Component {
   state = {
@@ -17,6 +18,10 @@ class Movies extends Component {
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
+  };
+
+  handlePagination = num => {
+    console.log('Pagination Clicked', num);
   };
 
   render() {
@@ -62,11 +67,12 @@ class Movies extends Component {
               ))}
             </tbody>
           </table>
+          <Pagination handlePagination={this.handlePagination} />
         </div>
       );
     else
       return (
-        <h2 className='container' style={{ margin: 10, textAlign: "center" }}>
+        <h2 className='container' style={{ margin: 10, textAlign: 'center' }}>
           No Movies Database
         </h2>
       );
